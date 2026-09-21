@@ -1,0 +1,42 @@
+import { sportIndex, sportsGroups } from "@/data/sources";
+import { demoNews } from "@/data/news";
+
+export function findSportBySlug(slug: string) {
+  return sportIndex.find((sport) => sport.slug === slug);
+}
+
+export function getAllScopesForSport(slug: string) {
+  const sport = findSportBySlug(slug);
+
+  if (!sport) {
+    return [];
+  }
+
+  return sport.scopes.map((scope) => scope.scope);
+}
+
+export function getScopeSources(sportSlug: string, scopeName: string) {
+  const sport = findSportBySlug(sportSlug);
+
+  if (!sport) {
+    return [];
+  }
+
+  const scope = sport.scopes.find((item) => item.scope === scopeName);
+
+  return scope?.sources ?? [];
+}
+
+export function getNewsForSportsByScope(sportSlug: string, scopeName: string) {
+  return demoNews.filter(
+    (item) => item.sportSlug === sportSlug && item.scope.toLowerCase() === scopeName.toLowerCase(),
+  );
+}
+
+export function getNewsById(id: string) {
+  return demoNews.find((item) => item.id === id);
+}
+
+export function getAllSports() {
+  return sportsGroups.flatMap((group) => group.sports);
+}

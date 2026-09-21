@@ -1,0 +1,32 @@
+{
+  "name": "la-era-nueva",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "db:generate": "prisma generate",
+    "db:push": "prisma db push",
+    "db:seed": "ts-node prisma/seed.ts",
+    "ingest:news": "ts-node scripts/ingest-news.ts"
+  },
+  "dependencies": {
+    "@prisma/client": "^5.18.0",
+    "next": "14.2.15",
+    "node-cron": "^3.1.0",
+    "prisma": "^5.18.0",
+    "react": "18.3.1",
+    "react-dom": "18.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "20.14.15",
+    "@types/react": "18.3.3",
+    "@types/react-dom": "18.3.0",
+    "eslint": "8.57.0",
+    "eslint-config-next": "14.2.15",
+    "ts-node": "10.9.2",
+    "typescript": "5.5.4"
+  }
+}
